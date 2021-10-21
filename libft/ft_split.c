@@ -6,7 +6,7 @@
 /*   By: avan-dey <avan-dey@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/29 12:58:48 by avan-dey          #+#    #+#             */
-/*   Updated: 2021/09/30 15:23:42 by avan-dey         ###   ########.fr       */
+/*   Updated: 2021/10/21 17:45:31 by avan-dey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static int	ft_lentab(char const *s, char c)
 	int		b;
 
 	b = 0;
-	while (*(s + b) != c && *(s + b) != '\0')
+	while (s[b] != c && s[b] != '\0')
 		b++;
 	return (b);
 }
@@ -57,9 +57,11 @@ char	**ft_split(char const *s, char c)
 	char	**t;
 
 	i = 0;
+	if (!s)
+		return (0);
 	number = ft_string(s, c);
 	t = (char **)malloc(sizeof(char *) * (number + 1));
-	if (!s && !t)
+	if (!t)
 		return (0);
 	while (i < number)
 	{

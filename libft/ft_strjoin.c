@@ -6,7 +6,7 @@
 /*   By: avan-dey <avan-dey@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/29 11:23:19 by avan-dey          #+#    #+#             */
-/*   Updated: 2021/09/29 11:52:28 by avan-dey         ###   ########.fr       */
+/*   Updated: 2021/10/21 15:32:51 by avan-dey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,27 @@
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
+	int		a;
+	int		b;
 	char	*s3;
-	size_t	dst;
 
-	dst = ft_strlen(s1) + ft_strlen(s2) + 1;
-	if (!s1)
-		return ((char *)s2);
-	if (!s2)
-		return ((char *)s1);
-	s3 = (char *)malloc(dst * sizeof(*s3));
+	a = 0;
+	b = 0;
+	if (!s1 || !s2)
+		return (0);
+	s3 = malloc(sizeof(char const) * (ft_strlen(s1) + ft_strlen(s2) + 1));
 	if (!s3)
 		return (0);
-	ft_strlcpy(s3, s1, ft_strlen(s1) + 1);
-	ft_strlcat(s3, s2, dst);
+	while (s1[a] != '\0')
+	{
+		s3[a] = s1[a];
+		a++;
+	}
+	while (s2[b] != '\0')
+	{
+		s3[a + b] = s2[b];
+		b++;
+	}
+	s3[a + b] = '\0';
 	return (s3);
 }
